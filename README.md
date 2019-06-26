@@ -36,7 +36,7 @@ style={{}} />
   
   ### List Image
 
-You need to wrap your container with a HOC named wrapperZoomImages to get the required props ([see example](https://github.com/duongxuannam/api-quanlychitieu)).
+You need to wrap your container with a HOC named wrapperZoomImages to get the required props ([see example](https://github.com/duongxuannam/react-native-zoom-lightbox/blob/master/Examples/index.js).
 ```javascript
 import {wrapperZoomImages,ImageInWraper } from 'react-native-zoom-lightbox'
 
@@ -120,7 +120,7 @@ ImageInWraper
 | indexState | `number` | yes | Props received from HOC |
 | open | `string` | yes | Props received from HOC | 
 
- [Example](https://github.com/duongxuannam/api-quanlychitieu)
+ [Example](https://github.com/duongxuannam/react-native-zoom-lightbox/blob/master/Examples/index.js)
 
 
 
