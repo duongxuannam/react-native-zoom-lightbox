@@ -1,0 +1,50 @@
+{
+  "name": "imagepackage",
+  "version": "0.0.3",
+  "dependencies": {
+    "react-swipeable-views-native": "^0.13.2",
+    "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
+    "react-native": "^0.59.8",
+    "react": "^16.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/runtime": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-react": "^7.12.4",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-test-renderer": "16.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duongxuannam/zoom-image"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "react-native-component",
+    "react",
+    "mobile",
+    "ios",
+    "android",
+    "ui",
+    "lightbox",
+    "gallery",
+    "image",
+    "zoom image",
+    "lightbox",
+    "react-native-lightbox"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duongxuannam/zoom-image/issues"
+  },
+  "homepage": "https://github.com/duongxuannam/zoom-image",
+  "author": "Duong Xuan Nam <duongxuannam1995@gmail.com>"
+}
