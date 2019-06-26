@@ -285,9 +285,9 @@ export default class SingleImage extends PureComponent {
       fullscreen,
       selectedImageHidden,
       index,
-      style,
+      
     } = this.state;
-    const { uri } = this.props;
+    const { uri,style } = this.props;
     const getOpacity = () => ({
       opacity: selectedImageHidden ? 0 : 1,
     });
@@ -296,7 +296,7 @@ export default class SingleImage extends PureComponent {
         <TouchableWithoutFeedback onPress={this.open(1)} >
           <View style={index + 1 === 1 ? getOpacity() : null}>
             <ImageCustom
-              uri={uri}
+              url={uri}
               style={[{ resizeMode: 'cover', height: '100%', width: '100%', borderRadius: 8 },style]}
               ref={ref => this.captureCarouselItem(ref, index + 1)}
               index={index + 1}

@@ -34,7 +34,7 @@ export default class ImageInWraper extends PureComponent {
       <TouchableWithoutFeedback onPress={open(index)} >
         <View style={indexState === index ? getOpacity() : null}>
           <ImageCustom
-            uri={url}
+            url={url}
             style={[{ resizeMode: 'cover', height: 200, width: 200, borderRadius: 8 },style]}
             ref={ref => captureCarouselItem(ref, index)}
             index={index}
