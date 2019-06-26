@@ -1,6 +1,6 @@
 {
   "name": "react-native-zoom-lightbox",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "dependencies": {
     "react-swipeable-views-native": "^0.13.2",
     "prop-types": "^15.5.10"
