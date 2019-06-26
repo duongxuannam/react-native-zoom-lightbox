@@ -1,5 +1,5 @@
 {
-  "name": "imagepackage",
+  "name": "react-native-zoom-lightbox",
   "version": "0.0.3",
   "dependencies": {
     "react-swipeable-views-native": "^0.13.2",
@@ -39,12 +39,13 @@
     "image",
     "zoom image",
     "lightbox",
-    "react-native-lightbox"
+    "react-native-lightbox",
+    "react-native-zoom-lightbox"
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/duongxuannam/zoom-image/issues"
+    "url": "https://github.com/duongxuannam/react-native-zoom-lightbox/issues"
   },
-  "homepage": "https://github.com/duongxuannam/zoom-image",
+  "homepage": "https://github.com/duongxuannam/react-native-zoom-lightbox",
   "author": "Duong Xuan Nam <duongxuannam1995@gmail.com>"
 }

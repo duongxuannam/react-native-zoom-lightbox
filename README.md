@@ -1,5 +1,5 @@
 
-# react-native-check-notification-permission
+# react-native-zoom-lightbox
 
 ## Demo 
 
@@ -12,14 +12,14 @@
 
 ## Getting started
 
-`$ npm install react-native-check-notification-permission --save`
+`$ npm install react-native-zoom-lightbox --save`
 
 
 ## Usage
 ### SingleImage
 
 ```javascript
-import {SingleImage} from 'react-native-check-notification-permission';
+import {SingleImage} from 'react-native-zoom-lightbox';
 
 <SingleImage 
 uri='https://avatars2.githubusercontent.com/u/31804215?s=40&v=4'
@@ -38,7 +38,7 @@ style={{}} />
 
 You need to wrap your container with a HOC named wrapperZoomImages to get the required props ([see example](https://github.com/duongxuannam/api-quanlychitieu)).
 ```javascript
-import {wrapperZoomImages,ImageInWraper } from 'imagepackage'
+import {wrapperZoomImages,ImageInWraper } from 'react-native-zoom-lightbox'
 
 export default wrapperZoomImages(YourContainer);
 ```
