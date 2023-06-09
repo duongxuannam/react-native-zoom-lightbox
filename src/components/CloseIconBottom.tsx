@@ -5,7 +5,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import {responsiveHeight, screenWidth} from 'src/responsive';
+import {responsiveHeight, screenWidth} from '../responsive';
 import {OFFSET_CLOSE} from '../constants';
 
 interface Props {

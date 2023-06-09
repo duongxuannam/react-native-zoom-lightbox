@@ -1,4 +1,4 @@
-import { responsiveHeight } from 'src/responsive';
+import { responsiveHeight } from './responsive';
 
 export const OFFSET_CLOSE = responsiveHeight(200);
 export const DEFAULT_IMAGE = 'https://reactnative.dev/img/tiny_logo.png';

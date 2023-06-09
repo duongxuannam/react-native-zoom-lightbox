@@ -6,10 +6,9 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {DEFAULT_IMAGE} from '../constants';
+import {DEFAULT_IMAGE,delay} from '../constants';
 import {useZoomImage} from './ZoomImageProvider';
-import {delay} from 'src/constants';
-import {screenHeight} from 'src/responsive';
+import {screenHeight} from '../responsive';
 
 interface Props extends ImageProps {
   index: number;

@@ -8,7 +8,7 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
-import {screenHeight, screenWidth} from 'src/responsive';
+import {screenHeight, screenWidth} from '../responsive';
 
 interface Props {
   measureImage: LayoutRectangle | undefined;
