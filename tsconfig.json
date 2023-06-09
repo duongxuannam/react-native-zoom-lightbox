@@ -1,0 +1,30 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    // Path alias config
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "constants/*": ["src/constants/*"],
+      "languages/*": ["src/languages/*"],
+      "navigation/*": ["src/navigation/*"],
+      "services/*": ["src/services/*"],
+      "store/*": ["src/store/*"],
+      "utils/*": ["src/utils/*"],
+      "contexts/*": ["src/contexts/*"],
+      "screens/*": ["src/screens/*"],
+      "hooks/*": ["src/hooks/*"],
+      "manager/*": ["src/manager/*"],
+      "assets/*": ["assets/*"],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js",
+    "e2e/**/*.js",
+  ],
+}
