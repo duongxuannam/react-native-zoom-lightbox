@@ -1,1 +1,0 @@
-{"version":3,"file":"NextButton.d.ts","sourceRoot":"","sources":["../../../../src/components/NextButton.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,OAAiB,EACf,WAAW,EAGZ,MAAM,yBAAyB,CAAC;AAIjC,UAAU,KAAK;IACb,MAAM,EAAE,WAAW,CAAC,MAAM,CAAC,CAAC;IAC5B,OAAO,EAAE,MAAM,IAAI,CAAC;CACrB;AAMD,QAAA,MAAM,UAAU,EAAE,KAAK,CAAC,EAAE,CAAC,KAAK,CAY/B,CAAC;AAEF,eAAe,UAAU,CAAC"}
