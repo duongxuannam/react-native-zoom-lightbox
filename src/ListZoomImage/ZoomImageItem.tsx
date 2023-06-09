@@ -1,14 +1,14 @@
-import React, {useEffect, useRef} from 'react';
-import {Image, ImageProps, Pressable} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Image, ImageProps, Pressable } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {DEFAULT_IMAGE,delay} from '../constants';
-import {useZoomImage} from './ZoomImageProvider';
-import {screenHeight} from '../responsive';
+import { DEFAULT_IMAGE, delay } from '../constants';
+import { useZoomImage } from './ZoomImageProvider';
+import { screenHeight, screenWidth } from '../responsive';
 
 interface Props extends ImageProps {
   index: number;
@@ -46,7 +46,7 @@ export const ZoomImageItem: React.FC<Props> = ({
               height,
             }
           : {
-              x: screenHeight / 2 - 200,
+              x: screenWidth / 2 - 200,
               y: index > currentIndex ? screenHeight + 200 : -200,
               width: 200,
               height: 200,
@@ -77,18 +77,19 @@ export const ZoomImageItem: React.FC<Props> = ({
                 height,
               }
             : {
-                x: screenHeight / 2 - 200,
+                x: screenWidth / 2 - 200,
                 y: index > currentIndex ? screenHeight + 200 : -200,
                 width: 200,
                 height: 200,
               };
           setRef(index, tempData);
-          valueAnimated.value = withTiming(1, {duration: 500});
+          valueAnimated.value = withTiming(1, { duration: 500 });
           await setCurrentIndex(index);
           delay(300);
           setIsOpenModal(true);
         });
-      }}>
+      }}
+    >
       <Animated.View style={[rStyle]}>
         <Image
           ref={ref}
@@ -103,7 +104,7 @@ export const ZoomImageItem: React.FC<Props> = ({
             });
           }}
           {...rest}
-          source={source || {uri: DEFAULT_IMAGE}}
+          source={source || { uri: DEFAULT_IMAGE }}
           style={style}
         />
       </Animated.View>
