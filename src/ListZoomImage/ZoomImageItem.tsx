@@ -6,9 +6,9 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {DEFAULT_IMAGE,delay} from '../constants';
+import {DEFAULT_IMAGE, delay} from '../constants';
 import {useZoomImage} from './ZoomImageProvider';
-import {screenHeight} from '../responsive';
+import {screenHeight, screenWidth} from '../responsive';
 
 interface Props extends ImageProps {
   index: number;
@@ -77,7 +77,7 @@ export const ZoomImageItem: React.FC<Props> = ({
                 height,
               }
             : {
-                x: screenHeight / 2 - 200,
+                x: screenWidth / 2 - 200,
                 y: index > currentIndex ? screenHeight + 200 : -200,
                 width: 200,
                 height: 200,
