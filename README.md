@@ -12,113 +12,118 @@
 
 ## Getting started
 
-`$ npm install react-native-zoom-lightbox --save`
+  A new version support typescript, latest RN, using react-native-reanimated, react-native-gesture-handle to run animation in UI thread (make sure installed 2 library before install this library)
+
+  If you want to use old version use HOC. It's on branch [old-version](https://github.com/duongxuannam/react-native-zoom-lightbox/tree/old-version) 
+
+`$ yarn add react-native-zoom-lightbox`
 
 
 ## Usage
-### SingleImage
+### Single Image
 
 ```javascript
-import {SingleImage} from 'react-native-zoom-lightbox';
+import {ZoomImage} from 'react-native-zoom-lightbox';
 
-<SingleImage 
-uri='https://avatars2.githubusercontent.com/u/31804215?s=40&v=4'
-style={{}} />
+      <ZoomImage
+        style={{
+          height: 200,
+          width: 400,
+          resizeMode: 'contain',
+        }}
+        source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+      />
 ```
 
 ##### Properties
 
+Just use Props of base [Image](https://reactnative.dev/docs/image#props) from React Native component
 
-| Prop   | Type  | Description |
-| :------------ |:---------------:| :-----|
-| uri  | `string` | Url of image |
-| style  | `object` | Style of Image component |
-  
   ### List Image
 
-You need to wrap your container with a HOC named wrapperZoomImages to get the required props ([see example](https://github.com/duongxuannam/react-native-zoom-lightbox/blob/master/Examples/index.js).
-```javascript
-import {wrapperZoomImages,ImageInWraper } from 'react-native-zoom-lightbox'
+You need to wrap your container with a provider named ZoomImageProvider and provide data list image and make sure item have property named: "source" then use ZoomImageItem inside for show image ([see example](https://github.com/duongxuannam/react-native-zoom-lightbox/blob/master/Examples/index.js))
 
-export default wrapperZoomImages(YourContainer);
+
+Item of list must be have 2 properties: <b>source</b> and <b>index</b> (to same with index beside list).
+```javascript
+export const EXAMPLE_DATA = [
+  {
+    index: 0,
+    source: 'https://reactnative.dev/img/tiny_logo.png',
+  },
+  {
+    index: 1,
+    source:
+      'https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.18169-1/11193438_402423169882782_2597021278587966343_n.jpg?stp=c0.4.80.80a_cp0_dst-jpg_p80x80&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=ijzswzxrJ0wAX__ihZZ&_nc_ht=scontent.fsgn5-6.fna&oh=00_AfDyTQd2-V2elAOMQtv3hJgG5N_mV4Zarla-C6v5cXvqqQ&oe=64A67468',
+  },
+  {
+    index: 2,
+    source: 'https://reactnative.dev/img/tiny_logo.png',
+  },
+  ...
+]
 ```
 
-Array of images must be saved at state named arrayImages.
-```javascript
-  constructor(props){
-    super(props);
-    this.state={
-      arrayImages : [
-        {url:'example',
-        },
-        {url:'example' }],
-    };
-  }
-```
-
-```javascript
-   const {getOpacity,captureCarouselItem,indexState,open} = this.props;
-   const {arrayImages} = this.state;
-```
 ##### Usage
 
 ```javascript
-   <View style={{ flex:1,alignItems:'center' }}>
-        {
-          this.state.arrayImages.map((item,index) => 
-            <ImageInWraper
-            open={open}
-            indexState={indexState}
-            getOpacity={getOpacity}
-            captureCarouselItem={captureCarouselItem}
-            index={index}
-            url={item.url}
-            style={{marginBottom:20}}
-            />
-          )
-        }
-      </View>
+const Example = () => {
+  return (
+    <ZoomImageProvider data={EXAMPLE_DATA}>
+      <FlatList
+        data={EXAMPLE_DATA}
+        renderItem={({item, index}) => {
+          return (
+            <View style={styles.imageContainer} bg="transparent" key={item.id}>
+              <ZoomImageItem
+                style={styles.imageStyle}
+                source={{uri: item.source}}
+                index={index}
+              />
+            </View>
+          );
+        }}
+        keyExtractor={(item: any) => item.id}
+      />
+    </ZoomImageProvider>
+  );
+};
 ```
 or
 ```javascript
-     <View style={{ flex:1,alignItems:'center' }}>
-        
-            <ImageInWraper
-            open={open}
-            indexState={indexState}
-            getOpacity={getOpacity}
-            captureCarouselItem={captureCarouselItem}
-            index={0}
-            url={this.state.arrayImages[0].url}
-            style={{marginBottom:20}}
+    <ZoomImageProvider data={EXAMPLE_DATA}>
+        <ScrollView>
+            <ZoomImageItem
+              source={{uri: EXAMPLE_DATA[0].source}}
+              index={EXAMPLE_DATA[0].index}
+              style={[styles.imageStyle, {marginBottom:20}]}
             />
-          
-            <Text>Example</Text>
+            <Text>Text Example</Text>
+            <ZoomImageItem
+              source={{uri: EXAMPLE_DATA[1].source}}
+              index={EXAMPLE_DATA[1].index}
+              style={[styles.imageStyle, {marginBottom:20}]}
+            />
+        </ScrollView>
+    </ZoomImageProvider>
 
-            <ImageInWraper
-            open={open}
-            indexState={indexState}
-            getOpacity={getOpacity}
-            captureCarouselItem={captureCarouselItem}
-            index={1}
-            url={this.state.arrayImages[1].url}
-            style={{marginBottom:20}}
-            />
-      </View>
 ```
 
 ##### Properties
-ImageInWraper
+
+ZoomImageProvider Props
 
 | Prop   | Type  | Required | Description |
 | :------------ |:---------------:| :---------------:| :-----|
-| uri | `string` | yes | Url of image |
-| style | `object` | no | Style of Image component |
-| index | `number` | yes | Index of Image |
-| captureCarouselItem | `func` | yes | Props received from HOC |
-| getOpacity | `func` | yes | Props received from HOC |
-| indexState | `number` | yes | Props received from HOC |
-| open | `string` | yes | Props received from HOC | 
+| data | array [ ] | yes | Item of list must be have 2 properties: <b>source</b> and <b>index</b> (to same with index outside list) |
+
+ZoomImageItem Props
+
+| Prop   | Type  | Required | Description |
+| :------------ |:---------------:| :---------------:| :-----|
+| index | `number` | yes | It's must be same with id each item provided in ZoomImageProvider |
+| ...props | [Image Props](https://reactnative.dev/docs/image#props) |  | Image props from base react native component |
+
 
  [Example](https://github.com/duongxuannam/react-native-zoom-lightbox/blob/master/Examples/index.js)
 
