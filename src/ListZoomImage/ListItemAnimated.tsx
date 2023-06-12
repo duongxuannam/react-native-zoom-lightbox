@@ -73,7 +73,7 @@ const ItemAnimated: React.FC<Props> = ({
               />
             );
           }}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.index ? item.index.toString() : item.id.toString() } 
         />
       </GestureDetector>
     </>

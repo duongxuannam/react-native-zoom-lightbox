@@ -23,7 +23,7 @@ import {DEFAULT_IMAGE, OFFSET_CLOSE} from '../constants';
 
 interface Props extends ImageProps {}
 
-const ZoomImage: React.FC<Props> = props => {
+const ZoomImage: React.FC<Props> = ({style, source, ...props}) => {
   const [measureImage, setMeasureImage] = useState<LayoutRectangle>();
 
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -103,55 +103,53 @@ const ZoomImage: React.FC<Props> = props => {
   const ref = useRef<Image>(null);
   return (
     <>
-      <>
-        <Pressable
-          onPress={() => {
-            ref?.current?.measure((_, __, width, height, pageX, pageY) => {
-              setMeasureImage({
-                x: pageX,
-                y: pageY,
-                width,
-                height,
-              });
+      <Pressable
+        onPress={() => {
+          ref?.current?.measure((_, __, width, height, pageX, pageY) => {
+            setMeasureImage({
+              x: pageX,
+              y: pageY,
+              width,
+              height,
             });
-            valueAnimated.value = withTiming(1, {duration: 500});
-            setIsOpenModal(true);
-          }}>
-          <Animated.View style={[rStyle]}>
-            <Image
-              ref={ref}
-              {...props}
-              source={props.source || {uri: DEFAULT_IMAGE}}
-              style={props.style}
+          });
+          valueAnimated.value = withTiming(1, {duration: 500});
+          setIsOpenModal(true);
+        }}>
+        <Animated.View style={[rStyle]}>
+          <Image
+            ref={ref}
+            {...props}
+            source={source || {uri: DEFAULT_IMAGE}}
+            style={style}
+          />
+        </Animated.View>
+      </Pressable>
+
+      <Modal transparent visible={isOpenModal} onRequestClose={onCloseModal}>
+        <GestureHandlerRootView style={styles.flex1}>
+          <Animated.View style={[styles.modalContainer, rStyleModal]}>
+            <CloseIconHeader offSet={offSet} onPress={onCloseModal} />
+            <CloseIconBottom offSet={offSet} />
+            {/* Content  */}
+
+            <ItemAnimated
+              valueAnimatedItem={valueAnimatedItem}
+              measureImage={measureImage}
+              gesture={gesture}
+              offSet={offSet}
+              scaleOffset={scaleOffset}
             />
           </Animated.View>
-        </Pressable>
-
-        <Modal transparent visible={isOpenModal} onRequestClose={onCloseModal}>
-          <GestureHandlerRootView style={style.flex1}>
-            <Animated.View style={[style.modalContainer, rStyleModal]}>
-              <CloseIconHeader offSet={offSet} onPress={onCloseModal} />
-              <CloseIconBottom offSet={offSet} />
-              {/* Content  */}
-
-              <ItemAnimated
-                valueAnimatedItem={valueAnimatedItem}
-                measureImage={measureImage}
-                gesture={gesture}
-                offSet={offSet}
-                scaleOffset={scaleOffset}
-              />
-            </Animated.View>
-          </GestureHandlerRootView>
-        </Modal>
-      </>
+        </GestureHandlerRootView>
+      </Modal>
     </>
   );
 };
 
 export default ZoomImage;
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   flex1: {
     flex: 1,
   },
